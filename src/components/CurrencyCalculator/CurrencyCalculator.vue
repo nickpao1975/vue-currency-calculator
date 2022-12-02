@@ -1,8 +1,12 @@
 <script lang="ts">
+import CalculatorNavigation from "@/components/CalculatorNavigation/CalculatorNavigation.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "CurrencyCalculator",
+  components: {
+    navigation: CalculatorNavigation,
+  },
   data() {
     return {
       amount: 0,
@@ -24,6 +28,7 @@ export default defineComponent({
 <template>
   <header>
     <h1>Currency Calculator</h1>
+    <navigation></navigation>
   </header>
   <main>
     <template v-if="conversion === 'toDollar'">
