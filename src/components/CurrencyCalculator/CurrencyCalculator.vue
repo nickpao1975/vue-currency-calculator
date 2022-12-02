@@ -15,6 +15,9 @@ export default defineComponent({
     };
   },
   methods: {
+    convertTo(event) {
+      this.conversion = event.target.dataset.conversion;
+    },
     convertToDollar() {
       this.conversion = "toDollar";
     },
