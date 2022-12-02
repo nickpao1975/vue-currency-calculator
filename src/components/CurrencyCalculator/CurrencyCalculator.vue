@@ -44,7 +44,14 @@ export default defineComponent({
         <label for="exchangeRate">Exchange rate: </label>
         <input type="text" id="exchangeRate" v-model="exchangeRate" />
       </div>
-      <p>Euro: {{ amount / exchangeRate }}</p>
+      <p>
+        Euro:
+        {{
+          isNaN(amount / exchangeRate) || !isFinite(amount / exchangeRate)
+            ? 0
+            : amount / exchangeRate
+        }}
+      </p>
     </template>
   </main>
 </template>
