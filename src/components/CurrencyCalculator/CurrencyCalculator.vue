@@ -31,7 +31,7 @@ export default defineComponent({
       <label for="exchangeRate">Exchange rate: </label>
       <input type="text" id="exchangeRate" v-model="exchangeRate" />
     </div>
-    <p>Dollar:</p>
+    <p>Dollar: {{ amount * exchangeRate }}</p>
   </main>
 </template>
 
