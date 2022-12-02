@@ -31,7 +31,7 @@ export default defineComponent({
     <template v-if="conversion === 'toDollar'">
       <div>
         <label for="amount">Amount (Euro): </label>
-        <input type="text" id="amount" v-model="amount" />
+        <input @keyup.shift.alt.e="convertTo" data-conversion="toEuro" type="text" id="amount" v-model="amount" />
       </div>
       <div>
         <label for="exchangeRate">Exchange rate: </label>
@@ -42,7 +42,7 @@ export default defineComponent({
     <template v-else>
       <div>
         <label for="amount">Amount (Dollar): </label>
-        <input type="text" id="amount" v-model="amount" />
+        <input @keyup.shift.alt.d="convertTo" data-conversion="toDollar" type="text" id="amount" v-model="amount" />
       </div>
       <div>
         <label for="exchangeRate">Exchange rate: </label>
