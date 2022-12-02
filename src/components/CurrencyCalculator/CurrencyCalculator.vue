@@ -31,6 +31,7 @@ export default defineComponent({
       <label for="exchangeRate">Exchange rate: </label>
       <input type="text" id="exchangeRate" />
     </div>
+    <p>Dollar:</p>
   </main>
 </template>
 
