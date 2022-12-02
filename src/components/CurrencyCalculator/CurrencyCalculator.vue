@@ -18,12 +18,6 @@ export default defineComponent({
     convertTo(event) {
       this.conversion = event.target.dataset.conversion;
     },
-    convertToDollar() {
-      this.conversion = "toDollar";
-    },
-    convertToEuro() {
-      this.conversion = "toEuro";
-    },
   },
 });
 </script>
