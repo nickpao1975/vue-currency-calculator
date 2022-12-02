@@ -31,7 +31,7 @@ export default defineComponent({
 <template>
   <header>
     <h1>Currency Calculator</h1>
-    <navigation></navigation>
+    <navigation @click="convertTo"></navigation>
   </header>
   <main>
     <template v-if="conversion === 'toDollar'">
