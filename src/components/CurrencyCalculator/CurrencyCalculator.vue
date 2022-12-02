@@ -24,12 +24,6 @@ export default defineComponent({
 <template>
   <header>
     <h1>Currency Calculator</h1>
-    <nav>
-      <ul>
-        <li><a @click="convertToDollar" href="#">Euro -> Dollar</a></li>
-        <li><a @click="convertToEuro" href="#">Dollar -> Euro</a></li>
-      </ul>
-    </nav>
   </header>
   <main>
     <template v-if="conversion === 'toDollar'">
