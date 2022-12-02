@@ -18,8 +18,8 @@ export default defineComponent({
     <h1>Currency Calculator</h1>
     <nav>
       <ul>
-        <li>Euro -> Dollar</li>
-        <li>Dollar -> Euro</li>
+        <li><a @click="conversion = 'toDollar'" href="#">Euro -> Dollar</a></li>
+        <li><a @click="conversion = 'toEuro'" href="#">Dollar -> Euro</a></li>
       </ul>
     </nav>
   </header>
