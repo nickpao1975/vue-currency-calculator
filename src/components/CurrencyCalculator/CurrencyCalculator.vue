@@ -7,6 +7,7 @@ export default defineComponent({
     return {
       amount: 0,
       exchangeRate: 0,
+      conversion: "toDollar",
     };
   },
 });
