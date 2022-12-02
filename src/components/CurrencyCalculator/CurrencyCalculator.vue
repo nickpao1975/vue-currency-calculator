@@ -23,15 +23,28 @@ export default defineComponent({
     </nav>
   </header>
   <main>
-    <div>
-      <label for="amount">Amount (Euro): </label>
-      <input type="text" id="amount" v-model="amount" />
-    </div>
-    <div>
-      <label for="exchangeRate">Exchange rate: </label>
-      <input type="text" id="exchangeRate" v-model="exchangeRate" />
-    </div>
-    <p>Dollar: {{ amount * exchangeRate }}</p>
+    <template>
+      <div>
+        <label for="amount">Amount (Euro): </label>
+        <input type="text" id="amount" v-model="amount" />
+      </div>
+      <div>
+        <label for="exchangeRate">Exchange rate: </label>
+        <input type="text" id="exchangeRate" v-model="exchangeRate" />
+      </div>
+      <p>Dollar: {{ amount * exchangeRate }}</p>
+    </template>
+    <template>
+      <div>
+        <label for="amount">Amount (Dollar): </label>
+        <input type="text" id="amount" v-model="amount" />
+      </div>
+      <div>
+        <label for="exchangeRate">Exchange rate: </label>
+        <input type="text" id="exchangeRate" v-model="exchangeRate" />
+      </div>
+      <p>Euro: {{ amount / exchangeRate }}</p>
+    </template>
   </main>
 </template>
 
