@@ -1,7 +1,20 @@
-<script lang="ts"></script>
+<script lang="ts">
+import CurrencyCalculator from "@/components/CurrencyCalculator/CurrencyCalculator.vue";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  components: { CurrencyCalculator },
+});
+
+defineComponent({
+  components: {
+    "currency-calculator": CurrencyCalculator,
+  },
+});
+</script>
 
 <template>
-  <h1>Welcome</h1>
+  <currency-calculator></currency-calculator>
 </template>
 
 <style scoped></style>
