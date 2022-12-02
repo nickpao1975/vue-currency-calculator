@@ -24,10 +24,12 @@ export default defineComponent({
   </header>
   <main>
     <div>
-      <input type="text" />
+      <label for="amount">Amount (Euro): </label>
+      <input type="text" id="amount" />
     </div>
     <div>
-      <input type="text" />
+      <label for="exchangeRate">Exchange rate: </label>
+      <input type="text" id="exchangeRate" />
     </div>
   </main>
 </template>
