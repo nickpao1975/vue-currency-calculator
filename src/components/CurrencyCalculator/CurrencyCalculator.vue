@@ -10,6 +10,14 @@ export default defineComponent({
       conversion: "toDollar",
     };
   },
+  methods: {
+    convertToDollar() {
+      this.conversion = "toDollar";
+    },
+    convertToEuro() {
+      this.conversion = "toEuro";
+    },
+  },
 });
 </script>
 
@@ -18,8 +26,8 @@ export default defineComponent({
     <h1>Currency Calculator</h1>
     <nav>
       <ul>
-        <li><a @click="conversion = 'toDollar'" href="#">Euro -> Dollar</a></li>
-        <li><a @click="conversion = 'toEuro'" href="#">Dollar -> Euro</a></li>
+        <li><a @click="convertToDollar" href="#">Euro -> Dollar</a></li>
+        <li><a @click="convertToEuro" href="#">Dollar -> Euro</a></li>
       </ul>
     </nav>
   </header>
