@@ -18,6 +18,11 @@ export default defineComponent({
     convertTo(event) {
       this.conversion = event.target.dataset.conversion;
     },
+    resetValues() {
+      this.amount = 0;
+      this.exchangeRate = 0;
+      this.conversion = "toDollar";
+    },
   },
 });
 </script>
@@ -27,7 +32,7 @@ export default defineComponent({
     <h1>Currency Calculator</h1>
     <navigation @click="convertTo"></navigation>
   </header>
-  <main>
+  <main @keyup.esc="resetValues">
     <template v-if="conversion === 'toDollar'">
       <div>
         <label for="amount">Amount (Euro): </label>
