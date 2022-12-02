@@ -24,6 +24,18 @@ export default defineComponent({
       this.conversion = "toDollar";
     },
   },
+  computed: {
+    resultDollar() {
+      const result = this.amount * this.exchangeRate;
+      const invalid = isNaN(result);
+      return invalid ? 0 : result;
+    },
+    resultEuro() {
+      const result = this.amount / this.exchangeRate;
+      const invalid = isNaN(result) || !isFinite(result);
+      return invalid ? 0 : result;
+    },
+  },
 });
 </script>
 
@@ -42,7 +54,7 @@ export default defineComponent({
         <label for="exchangeRate">Exchange rate: </label>
         <input type="text" id="exchangeRate" v-model="exchangeRate" />
       </div>
-      <p>Dollar: {{ amount * exchangeRate }}</p>
+      <p>Dollar: {{ resultDollar }}</p>
     </template>
     <template v-else>
       <div>
@@ -53,14 +65,7 @@ export default defineComponent({
         <label for="exchangeRate">Exchange rate: </label>
         <input type="text" id="exchangeRate" v-model="exchangeRate" />
       </div>
-      <p>
-        Euro:
-        {{
-          isNaN(amount / exchangeRate) || !isFinite(amount / exchangeRate)
-            ? 0
-            : amount / exchangeRate
-        }}
-      </p>
+      <p>Euro: {{ resultEuro }}</p>
     </template>
   </main>
 </template>
