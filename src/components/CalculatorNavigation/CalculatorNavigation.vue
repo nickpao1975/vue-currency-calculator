@@ -9,8 +9,8 @@ export default defineComponent({
 <template>
   <nav>
     <ul>
-      <li><a href="#">Euro -> Dollar</a></li>
-      <li><a href="#">Dollar -> Euro</a></li>
+      <li><a href="#" data-conversion="toDollar">Euro -> Dollar</a></li>
+      <li><a href="#" data-conversion="toEuro">Dollar -> Euro</a></li>
     </ul>
   </nav>
 </template>
