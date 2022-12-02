@@ -24,7 +24,7 @@ export default defineComponent({
     </nav>
   </header>
   <main>
-    <template>
+    <template v-if="conversion === 'toDollar'">
       <div>
         <label for="amount">Amount (Euro): </label>
         <input type="text" id="amount" v-model="amount" />
@@ -35,7 +35,7 @@ export default defineComponent({
       </div>
       <p>Dollar: {{ amount * exchangeRate }}</p>
     </template>
-    <template>
+    <template v-else>
       <div>
         <label for="amount">Amount (Dollar): </label>
         <input type="text" id="amount" v-model="amount" />
