@@ -22,6 +22,14 @@ export default defineComponent({
       </ul>
     </nav>
   </header>
+  <main>
+    <div>
+      <input type="text" />
+    </div>
+    <div>
+      <input type="text" />
+    </div>
+  </main>
 </template>
 
 <style scoped></style>
