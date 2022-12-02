@@ -3,6 +3,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "CurrencyCalculator",
+  data() {
+    return {
+      amount: 0,
+      exchangeRate: 0,
+    };
+  },
 });
 </script>
 
