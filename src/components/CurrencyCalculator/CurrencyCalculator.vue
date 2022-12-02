@@ -7,7 +7,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <h1>Currency Calculator</h1>
+  <header>
+    <h1>Currency Calculator</h1>
+    <nav>
+      <ul>
+        <li>Euro -> Dollar</li>
+        <li>Dollar -> Euro</li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <style scoped></style>
