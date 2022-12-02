@@ -25,11 +25,11 @@ export default defineComponent({
   <main>
     <div>
       <label for="amount">Amount (Euro): </label>
-      <input type="text" id="amount" />
+      <input type="text" id="amount" v-model="amount" />
     </div>
     <div>
       <label for="exchangeRate">Exchange rate: </label>
-      <input type="text" id="exchangeRate" />
+      <input type="text" id="exchangeRate" v-model="exchangeRate" />
     </div>
     <p>Dollar:</p>
   </main>
