@@ -20,7 +20,7 @@ export default defineComponent({
         id: 0,
         amount: 0,
         exchangeRate: 0,
-        result: 0
+        result: 0,
       },
     };
   },
@@ -38,8 +38,8 @@ export default defineComponent({
         id: this.counter,
         amount: this.amount,
         exchangeRate: this.exchangeRate,
-        result: this.result
-      }
+        result: this.result,
+      };
       this.counter++;
     },
     convertTo(event) {
@@ -54,6 +54,9 @@ export default defineComponent({
     },
   },
   computed: {
+    setCurrencySymbol() {
+      return this.conversion === "toDollar" ? "fa fa-eur" : "fa fa-usd";
+    },
     resultDollar() {
       const result = this.amount * this.exchangeRate;
       const invalid = isNaN(result);
@@ -69,38 +72,66 @@ export default defineComponent({
 </script>
 
 <template>
-  <header>
-    <h1>Currency Calculator</h1>
-    <navigation @click="convertTo"></navigation>
+  <header class="content columns is-centered">
+    <div class="column is-one-quarter">
+      <h1>Currency Calculator</h1>
+      <navigation class="nav-item" @click="convertTo"></navigation>
+    </div>
   </header>
-  <main @keyup.esc="resetValues">
-    <template v-if="conversion === 'toDollar'">
-      <div>
-        <label for="amount">Amount (Euro): </label>
-        <input @keyup.shift.alt.e="convertTo" data-conversion="toEuro" type="text" id="amount" v-model="amount" />
-      </div>
-      <div>
-        <label for="exchangeRate">Exchange rate: </label>
-        <input type="text" id="exchangeRate" v-model="exchangeRate" />
-      </div>
-      <p>Dollar: {{ result }}</p>
-    </template>
-    <template v-else>
-      <div>
-        <label for="amount">Amount (Dollar): </label>
-        <input @keyup.shift.alt.d="convertTo" data-conversion="toDollar" type="text" id="amount" v-model="amount" />
-      </div>
-      <div>
-        <label for="exchangeRate">Exchange rate: </label>
-        <input type="text" id="exchangeRate" v-model="exchangeRate" />
-      </div>
-      <p>Euro: {{ result }}</p>
-    </template>
-    <button type="button" @click="calculate">Calculate</button>
+  <main @keyup.esc="resetValues" class="content columns is-centered">
+    <div class="column is-one-quarter">
+      <template v-if="conversion === 'toDollar'">
+        <div class="field">
+          <label class="label" for="amount">Amount (Euro): </label>
+          <div class="control has-icons-left">
+            <input class="input is-primary" @keyup.shift.alt.e="convertTo" data-conversion="toEuro" type="text" id="amount"
+                   v-model="amount" />
+            <span class="icon is-small is-left"><i :class="setCurrencySymbol"></i></span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="exchangeRate">Exchange rate: </label>
+          <div class="control has-icons-left">
+            <input class="input is-primary" type="text" id="exchangeRate" v-model="exchangeRate" />
+            <span class="icon is-small is-left">
+              <i class="fa fa-line-chart"></i>
+            </span>
+          </div>
 
-    <History v-bind:history="currentCalculation" :conversion="conversion"></History>
+        </div>
+        <p>Dollar: {{ result }}</p>
+      </template>
 
+      <template v-else>
+        <div class="field">
+          <label class="label" for="amount">Amount (Dollar): </label>
+          <div class="control has-icons-left">
+            <input class="input is-primary" @keyup.shift.alt.d="convertTo" data-conversion="toDollar" type="text" id="amount"
+                   v-model="amount" />
+            <span class="icon is-small is-left">
+              <i :class="setCurrencySymbol"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="exchangeRate">Exchange rate: </label>
+          <div class="control has-icons-left">
+            <input class="input is-primary" type="text" id="exchangeRate" v-model="exchangeRate" />
+            <span class="icon is-small is-left"><i class="fa fa-line-chart"></i></span>
+          </div>
+        </div>
+        <p>Euro: {{ result }}</p>
+      </template>
+
+      <button class="button is-primary" type="button" @click="calculate">Calculate</button>
+
+      <History v-bind:history="currentCalculation" :conversion="conversion"></History>
+    </div>
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+header {
+  margin-top: 25px;
+}
+</style>
