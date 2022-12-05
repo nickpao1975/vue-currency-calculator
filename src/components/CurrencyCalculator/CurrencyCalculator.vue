@@ -33,12 +33,13 @@ export default defineComponent({
     },
     convertTo(event) {
       this.conversion = event.target.dataset.conversion;
-      this.resetValues();
+      this.result = 0;
     },
     resetValues() {
       this.amount = 0;
       this.exchangeRate = 0;
       this.result = 0;
+      this.conversion = 'toDollar'
     },
   },
   computed: {
