@@ -22,10 +22,10 @@ export default defineComponent({
   },
   computed: {
     amountCurrencySymbol() {
-      return this.conversion === "toDollar" ? "EUR" : "USD";
+      return this.conversion === "toDollar" ? "fa fa-eur" : "fa fa-usd";
     },
     resultCurrencySymbol() {
-      return this.conversion === "toDollar" ? "USD" : "EUR";
+      return this.conversion === "toDollar" ? "fa fa-usd" : "fa fa-eur";
     },
   },
   methods: {
@@ -44,11 +44,10 @@ export default defineComponent({
     },
   },
 });
-
 </script>
 
 <template>
-  <table>
+  <table class="table is-striped is-narrow">
     <thead>
     <tr>
       <th>Amount</th>
@@ -58,14 +57,13 @@ export default defineComponent({
     </thead>
     <tbody>
     <tr v-for="item in calculationHistory" :key="item.id">
-      <td>{{ item.amount }}&nbsp;{{ item.amountCurrencySymbol }}</td>
+      <td>{{ item.amount }}&nbsp;<i class="fa" :class="item.amountCurrencySymbol"></i></td>
       <td>{{ item.exchangeRate }}</td>
-      <td>{{ item.result }}&nbsp;{{ item.resultCurrencySymbol }}</td>
+      <td>{{ item.result }}&nbsp;<i class="fa" :class="item.resultCurrencySymbol"></i></td>
     </tr>
     </tbody>
   </table>
 </template>
 
 <style scoped>
-
 </style>
