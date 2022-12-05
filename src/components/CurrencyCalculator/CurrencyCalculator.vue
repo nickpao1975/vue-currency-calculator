@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import CalculatorNavigation from "@/components/CalculatorNavigation/CalculatorNavigation.vue";
 import { defineComponent } from "vue";
 
@@ -12,15 +12,33 @@ export default defineComponent({
       amount: 0,
       exchangeRate: 0,
       conversion: "toDollar",
+      result: 0,
+      history: []
     };
   },
   methods: {
+    calculate() {
+      if (this.conversion === "toDollar") {
+        this.result = this.resultDollar
+      } else {
+        this.result = this.resultEuro
+      }
+      this.updateHistory();
+    },
+    updateHistory() {
+      this.history.push(`Amount: ${this.amount}, exchange rate: ${this.exchangeRate}, result: ${this.result}`)
+      if (this.history.length > 10) {
+        this.history.shift()
+      }
+    },
     convertTo(event) {
       this.conversion = event.target.dataset.conversion;
+      this.resetValues();
     },
     resetValues() {
       this.amount = 0;
       this.exchangeRate = 0;
+      this.result = 0;
       this.conversion = "toDollar";
     },
   },
@@ -54,7 +72,7 @@ export default defineComponent({
         <label for="exchangeRate">Exchange rate: </label>
         <input type="text" id="exchangeRate" v-model="exchangeRate" />
       </div>
-      <p>Dollar: {{ resultDollar }}</p>
+      <p>Dollar: {{ result }}</p>
     </template>
     <template v-else>
       <div>
@@ -65,8 +83,14 @@ export default defineComponent({
         <label for="exchangeRate">Exchange rate: </label>
         <input type="text" id="exchangeRate" v-model="exchangeRate" />
       </div>
-      <p>Euro: {{ resultEuro }}</p>
+      <p>Euro: {{ result }}</p>
     </template>
+    <button @click="calculate">Calculate</button>
+
+    <ul>
+      <li v-for="item in history">{{ item }}</li>
+    </ul>
+
   </main>
 </template>
 
