@@ -39,7 +39,6 @@ export default defineComponent({
       this.amount = 0;
       this.exchangeRate = 0;
       this.result = 0;
-      this.conversion = "toDollar";
     },
   },
   computed: {
