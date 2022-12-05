@@ -7,11 +7,17 @@ export default defineComponent({
 </script>
 
 <template>
-  <nav>
-    <ul>
-      <li><a href="#" data-conversion="toDollar">Euro -> Dollar</a></li>
-      <li><a href="#" data-conversion="toEuro">Dollar -> Euro</a></li>
-    </ul>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#" data-conversion="toDollar">
+          Euro&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;Dollar
+        </a>
+        <a class="navbar-item" href="#" data-conversion="toEuro">
+          Dollar&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;Euro
+        </a>
+      </div>
+    </div>
   </nav>
 </template>
 
