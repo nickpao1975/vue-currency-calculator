@@ -13,22 +13,22 @@ export default defineComponent({
       exchangeRate: 0,
       conversion: "toDollar",
       result: 0,
-      history: []
+      history: [],
     };
   },
   methods: {
     calculate() {
       if (this.conversion === "toDollar") {
-        this.result = this.resultDollar
+        this.result = this.resultDollar;
       } else {
-        this.result = this.resultEuro
+        this.result = this.resultEuro;
       }
       this.updateHistory();
     },
     updateHistory() {
-      this.history.push(`Amount: ${this.amount}, exchange rate: ${this.exchangeRate}, result: ${this.result}`)
+      this.history.push(`Amount: ${ this.amount }, exchange rate: ${ this.exchangeRate }, result: ${ this.result }`);
       if (this.history.length > 10) {
-        this.history.shift()
+        this.history.shift();
       }
     },
     convertTo(event) {
@@ -39,7 +39,7 @@ export default defineComponent({
       this.amount = 0;
       this.exchangeRate = 0;
       this.result = 0;
-      this.conversion = 'toDollar'
+      this.conversion = "toDollar";
     },
   },
   computed: {

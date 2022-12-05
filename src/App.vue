@@ -11,7 +11,6 @@ export default defineComponent({
 
 <template>
   <currency-calculator></currency-calculator>
-
 </template>
 
 <style scoped></style>
