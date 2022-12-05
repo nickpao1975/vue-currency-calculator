@@ -1,10 +1,12 @@
 <script>
 import CalculatorNavigation from "@/components/CalculatorNavigation/CalculatorNavigation.vue";
 import { defineComponent } from "vue";
+import History from "@/components/History/History.vue";
 
 export default defineComponent({
   name: "CurrencyCalculator",
   components: {
+    History,
     navigation: CalculatorNavigation,
   },
   data() {
@@ -13,7 +15,13 @@ export default defineComponent({
       exchangeRate: 0,
       conversion: "toDollar",
       result: 0,
-      history: [],
+      counter: 0,
+      currentCalculation: {
+        id: 0,
+        amount: 0,
+        exchangeRate: 0,
+        result: 0
+      },
     };
   },
   methods: {
@@ -26,10 +34,13 @@ export default defineComponent({
       this.updateHistory();
     },
     updateHistory() {
-      this.history.push(`Amount: ${ this.amount }, exchange rate: ${ this.exchangeRate }, result: ${ this.result }`);
-      if (this.history.length > 10) {
-        this.history.shift();
+      this.currentCalculation = {
+        id: this.counter,
+        amount: this.amount,
+        exchangeRate: this.exchangeRate,
+        result: this.result
       }
+      this.counter++;
     },
     convertTo(event) {
       this.conversion = event.target.dataset.conversion;
@@ -85,11 +96,9 @@ export default defineComponent({
       </div>
       <p>Euro: {{ result }}</p>
     </template>
-    <button @click="calculate">Calculate</button>
+    <button type="button" @click="calculate">Calculate</button>
 
-    <ul>
-      <li v-for="item in history">{{ item }}</li>
-    </ul>
+    <History v-bind:history="currentCalculation" :conversion="conversion"></History>
 
   </main>
 </template>
